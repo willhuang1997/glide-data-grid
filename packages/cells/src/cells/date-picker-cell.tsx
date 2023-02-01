@@ -6,7 +6,6 @@ import {
     GridCellKind,
     ProvideEditorCallback,
 } from "@glideapps/glide-data-grid";
-import moment from "moment";
 
 interface DatePickerCellProps {
     readonly kind: "date-picker-cell";
@@ -15,19 +14,21 @@ interface DatePickerCellProps {
     readonly format: "date" | "time" | "datetime-local";
 }
 
-export const formatValueForHTMLInput = (format: "date" | "time" | "datetime-local", date: Date): string => {
+export const formatValueForHTMLInput = (
+    format: "date" | "time" | "datetime-local",
+    date: Date
+  ): string => {
     if (format === "date") {
-        return moment.utc(date).format("YYYY-MM-DD");
+      return date.toISOString().split("T")[0]
     }
     if (format === "time") {
-        return moment.utc(date).format("HH:mm:ss.SSS");
+      return date.toISOString().split("T")[1].replace("Z", "")
     }
     if (format === "datetime-local") {
-        // already accounts for utc
-        return date.toISOString().replace("Z", "");
+      return date.toISOString().replace("Z", "")
     }
-    return "";
-};
+    return ""
+  }
 
 export type DatePickerCell = CustomCell<DatePickerCellProps>;
 
