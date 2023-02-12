@@ -185,9 +185,7 @@ describe("onPaste", () => {
         ["Sun Dec 17 1995 03:24:00 GMT", "1995-12-17T03:24:00.000Z"],
         ["100", "1970-01-01T00:00:00.100Z"],
         ["-1", "1969-12-31T23:59:59.999Z"],
-        [100, "1970-01-01T00:00:00.100Z"],
-        [-1, "1969-12-31T23:59:59.999Z"],
-    ])("correctly interprets pasted value %p as %p", (input: string | number | Date, expected: string) => {
+    ])("correctly interprets pasted value %p as %p", (input: string, expected: string) => {
         // @ts-ignore
         const { date } = renderer.onPaste(input, {});
         expect(date.toISOString()).toStrictEqual(expected);
