@@ -340,8 +340,6 @@ export const CustomCells: React.VFC = () => {
                                 date: new Date(),
                                 displayDate: new Date().toISOString().split("T")[0],
                                 format: "date",
-                                min: "2021-01-01",
-                                max: "2021-12-31",
                             },
                         };
                         return d;
