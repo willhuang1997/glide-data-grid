@@ -178,6 +178,7 @@ export const CustomCells: React.VFC = () => {
                 onPaste={true}
                 // eslint-disable-next-line no-console
                 onCellEdited={(...args) => console.log("Edit Cell", ...args)}
+                getCellsForSelection={true}
                 getCellContent={cell => {
                     const [col, row] = cell;
                     if (col === 0) {
@@ -339,6 +340,8 @@ export const CustomCells: React.VFC = () => {
                                 date: new Date(),
                                 displayDate: new Date().toISOString().split("T")[0],
                                 format: "date",
+                                min: "2021-01-01",
+                                max: "2021-12-31",
                             },
                         };
                         return d;
@@ -444,16 +447,16 @@ export const CustomCells: React.VFC = () => {
                         width: 150,
                     },
                     {
+                        id: "datetime-picker",
                         title: "Datetime Picker",
-                        width: 150,
                     },
                     {
+                        id: "date-picker",
                         title: "Date Picker",
-                        width: 150,
                     },
                     {
+                        id: "time-picker",
                         title: "Time Picker",
-                        width: 150,
                     },
                     {
                         title: "Links",
